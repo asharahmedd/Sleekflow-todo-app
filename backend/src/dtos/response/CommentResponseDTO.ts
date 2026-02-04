@@ -1,7 +1,7 @@
 import { UserSummaryDTO } from './UserResponseDTO';
 
 export class CommentResponseDTO {
-  id: string;
+  _id: string;
   todoId: string;
   userId: UserSummaryDTO | string;
   userName: string;
@@ -10,7 +10,7 @@ export class CommentResponseDTO {
   updatedAt: string;
 
   constructor(comment: any) {
-    this.id = comment._id.toString();
+    this._id = comment._id.toString();
     this.todoId = comment.todoId?.toString() || '';
     
     // Format userId - check if populated or just an ID

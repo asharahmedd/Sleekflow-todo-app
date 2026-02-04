@@ -1,11 +1,11 @@
 export class UserResponseDTO {
-    id: string;
+    _id: string;
     name: string;
     email: string;
     createdAt: string;
   
     constructor(user: any) {
-      this.id = user._id.toString();
+      this._id = user._id.toString();
       this.name = user.name;
       this.email = user.email;
       this.createdAt = user.createdAt ? user.createdAt.toISOString() : new Date().toISOString();
@@ -15,12 +15,12 @@ export class UserResponseDTO {
   
   // Simple version for nested user references (e.g., todo creator)
   export class UserSummaryDTO {
-    id: string;
+    _id: string;
     name: string;
     email: string;
   
     constructor(user: any) {
-      this.id = user._id?.toString() || user.id || user.toString();
+      this._id = user._id?.toString() || user.id || user.toString();
       this.name = user.name || 'Unknown';
       this.email = user.email || '';
     }

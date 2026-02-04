@@ -1,7 +1,7 @@
 import { UserSummaryDTO } from './UserResponseDTO';
 
 export class TodoResponseDTO {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   status: string;
@@ -13,7 +13,7 @@ export class TodoResponseDTO {
   updatedAt: string;
 
   constructor(todo: any) {
-    this.id = todo._id.toString();
+    this._id = todo._id.toString();
     this.name = todo.name;
     this.description = todo.description;
     this.status = todo.status;
