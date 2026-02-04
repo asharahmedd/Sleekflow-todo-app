@@ -111,7 +111,7 @@ onUnmounted(() => {
   <div class="activity-feed-container">
     <!-- Toast Notification -->
     <transition name="toast">
-      <div v-if="showToast && toastNotification" class="toast-notification" @click="showToast = false">
+      <div v-if="showToast && toastNotification" class="toast-notification" @click="showToastNotification(toastNotification)">
         <div class="toast-icon">{{ getActivityIcon(toastNotification.type) }}</div>
         <div class="toast-content">
           <p class="toast-message">{{ toastNotification.message }}</p>
@@ -171,7 +171,7 @@ onUnmounted(() => {
 /* Toast Notification Styles */
 .toast-notification {
   position: fixed;
-  bottom: 80px;
+  bottom: 40px;
   right: 24px;
   display: flex;
   align-items: center;
@@ -476,7 +476,7 @@ onUnmounted(() => {
   }
   
   .toast-notification {
-    right: 330px;
+    right: 33px;
   }
 }
 
