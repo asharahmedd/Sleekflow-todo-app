@@ -1,0 +1,38 @@
+### Register a new user
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+### Login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+### Get current user (replace TOKEN with actual token from login)
+GET http://localhost:3000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODIzMDI2M2ZhYjQ4NWRkZDNmYzQ4ZiIsImlhdCI6MTc3MDEzOTcyNCwiZXhwIjoxNzcwNzQ0NTI0fQ.t6QgpywRrM12BYlbn10cS_gipXed7O2gHA2maipS3U8
+
+### Create a todo (with auth token)
+POST http://localhost:3000/api/todos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODIzMDI2M2ZhYjQ4NWRkZDNmYzQ4ZiIsImlhdCI6MTc3MDEzOTcyNCwiZXhwIjoxNzcwNzQ0NTI0fQ.t6QgpywRrM12BYlbn10cS_gipXed7O2gHA2maipS3U8
+
+{
+  "name": "Test Todo",
+  "description": "This is a test",
+  "dueDate": "2024-12-31",
+  "status": "Not Started"
+}
+
+### Get all todos (with auth token)
+GET http://localhost:3000/api/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODIzMDI2M2ZhYjQ4NWRkZDNmYzQ4ZiIsImlhdCI6MTc3MDEzOTcyNCwiZXhwIjoxNzcwNzQ0NTI0fQ.t6QgpywRrM12BYlbn10cS_gipXed7O2gHA2maipS3U8

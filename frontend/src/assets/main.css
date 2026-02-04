@@ -1,0 +1,109 @@
+@import './base.css';
+
+/* Modern Minimalistic Theme Variables */
+:root[data-theme="light"] {
+  /* Primary Color - #0066FF Blue */
+  --color-primary: #0066FF;
+  --color-primary-dark: #0052CC;
+  --color-primary-light: #3385FF;
+  --color-primary-alpha: rgba(0, 102, 255, 0.1);
+  
+  /* Backgrounds */
+  --bg-page: #F8F9FA;
+  --bg-card: #FFFFFF;
+  --bg-input: #FFFFFF;
+  --bg-hover: #F5F6F7;
+  
+  /* Text */
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --text-inverse: #FFFFFF;
+  
+  /* Borders */
+  --border-color: #E5E7EB;
+  --border-focus: var(--color-primary);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  
+  /* Status Colors */
+  --status-success: #10B981;
+  --status-warning: #F59E0B;
+  --status-error: #EF4444;
+  --status-info: #3B82F6;
+  
+  /* Priority Colors */
+  --priority-high: #EF4444;
+  --priority-medium: #F59E0B;
+  --priority-low: #10B981;
+}
+
+:root[data-theme="dark"] {
+  /* Primary Color - Brighter in dark mode */
+  --color-primary: #3385FF;
+  --color-primary-dark: #0066FF;
+  --color-primary-light: #5CA3FF;
+  --color-primary-alpha: rgba(51, 133, 255, 0.15);
+  
+  /* Backgrounds */
+  --bg-page: #0F1419;
+  --bg-card: #1A1F2E;
+  --bg-input: #242938;
+  --bg-hover: #2A3142;
+  
+  /* Text */
+  --text-primary: #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --text-muted: #9CA3AF;
+  --text-inverse: #0F1419;
+  
+  /* Borders */
+  --border-color: #2D3748;
+  --border-focus: var(--color-primary);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+  
+  /* Status Colors - Adjusted for dark mode */
+  --status-success: #34D399;
+  --status-warning: #FBBF24;
+  --status-error: #F87171;
+  --status-info: #60A5FA;
+  
+  /* Priority Colors */
+  --priority-high: #F87171;
+  --priority-medium: #FBBF24;
+  --priority-low: #34D399;
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Reset and Base */
+#app {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: 0.2s;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
