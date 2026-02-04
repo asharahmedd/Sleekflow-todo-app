@@ -26,7 +26,7 @@
 
       <div class="form-group">
         <label for="dueDate">Due Date:</label>
-        <input id="dueDate" v-model="dueDate" type="date" required />
+        <input id="dueDate" v-model="dueDate" type="date" required @click="openDatePicker" />
       </div>
 
       <div class="form-group">
@@ -92,7 +92,18 @@ const resetForm = () => {
   status.value = 'Not Started';
   priority.value = 'Medium';
 };
-
+// Function to open calendar picker
+const openDatePicker = (event: Event) => {
+  const input = event.target as HTMLInputElement;
+  if (input && input.showPicker) {
+    try {
+      input.showPicker();
+    } catch {
+      // Fallback for browsers that don't support showPicker
+      input.focus();
+    }
+  }
+};
 // Watch for editing todo changes
 watch(
   () => props.editingTodo,
@@ -100,7 +111,7 @@ watch(
     if (todo) {
       name.value = todo.name;
       description.value = todo.description;
-      dueDate.value = todo.dueDate.split('T')[0] || ''; // Format for input[type="date"]
+      dueDate.value = todo.dueDate.split('T')[0] || '';
       status.value = todo.status;
       priority.value = todo.priority || 'Medium';
     } else {
@@ -118,6 +129,7 @@ const handleSubmit = () => {
     return;
   }
 
+  // dueDate.value is already in 'yyyy-MM-dd' format from input[type="date"]
   emit('submit', {
     name: name.value,
     description: description.value,
@@ -145,7 +157,7 @@ const handleCancel = () => {
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
   margin-bottom: 24px;
-  width: 100%;
+  width: 89%;
   max-width: 1200px;
 }
 
@@ -261,5 +273,42 @@ const handleCancel = () => {
   .btn-secondary {
     width: 100%;
   }
+}
+/* Style the calendar icon */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+.form-group input[type="date"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-weight: 400;
+  cursor: pointer;
+  
+  /* Make it look more styled */
+  color-scheme: dark; /* Tells browser to use dark calendar on dark themes */
+}
+
+/* Light mode */
+:root[data-theme="light"] .form-group input[type="date"],
+.light-mode .form-group input[type="date"] {
+  color-scheme: light;
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .form-group input[type="date"],
+.dark-mode .form-group input[type="date"] {
+  color-scheme: dark;
 }
 </style>

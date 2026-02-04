@@ -88,7 +88,7 @@ const removeUser = async (userId: string) => {
   successMessage.value = '';
 
   try {
-    await todoApi.unshareWithUser(props.todo._id, userId);
+    await todoApi.unshareWithUser(props.todo.id, userId);
     successMessage.value = 'User removed successfully!';
     await loadSharedUsers();
     emit('updated');

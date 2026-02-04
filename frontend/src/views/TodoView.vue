@@ -339,10 +339,8 @@ onUnmounted(() => {
 
 <style scoped>
 #todo-app {
-  margin-right: 350px;
   min-height: 100vh;
   background: var(--bg-page);
-  transition: margin-right 0.3s ease;
 }
 
 /* ===== HEADER ===== */
@@ -395,7 +393,7 @@ onUnmounted(() => {
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 13px;
   cursor: pointer;
   color: white;
   transition: all 0.2s ease;
@@ -443,11 +441,14 @@ onUnmounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ===== TODOS SECTION ===== */
 .todos-section {
-  width: 100%;
+  width: 89%
 }
 
 .section-header {
@@ -613,12 +614,6 @@ onUnmounted(() => {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1400px) {
-  #todo-app {
-    margin-right: 0;
-  }
-}
-
 @media (max-width: 768px) {
   .container {
     padding: 16px;

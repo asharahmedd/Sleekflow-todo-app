@@ -171,8 +171,8 @@ onUnmounted(() => {
 /* Toast Notification Styles */
 .toast-notification {
   position: fixed;
-  top: 24px;
-  right: 380px;
+  bottom: 80px;
+  right: 24px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -191,7 +191,7 @@ onUnmounted(() => {
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(30px);
   }
   to {
     opacity: 1;
@@ -263,7 +263,7 @@ onUnmounted(() => {
 /* Minimized Toggle Button */
 .feed-toggle-btn-minimized {
   position: fixed;
-  top: 24px;
+  bottom: 24px;
   right: 24px;
   display: flex;
   align-items: center;
@@ -318,7 +318,7 @@ onUnmounted(() => {
 /* Activity Feed Panel - Now a Sidebar */
 .activity-feed-panel {
   position: fixed;
-  top: 0;
+  top: 73px;
   right: 0;
   width: 350px;
   height: 100vh;
@@ -334,7 +334,7 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   background: var(--color-primary);
   color: white;
   flex-shrink: 0;
