@@ -177,7 +177,7 @@ const getEmailTemplate = (content: string): string => {
     </div>
     <div class="footer">
       <p>You're receiving this email because you're using SleekFlow Todo App.</p>
-      <p><a href="${process.env.APP_URL}/settings">Manage email preferences</a> | <a href="${process.env.APP_URL}">Open App</a></p>
+      <p><a href="${process.env.EMAIL_FRONTEND_URL || process.env.APP_URL}/settings">Manage email preferences</a> | <a href="${process.env.EMAIL_FRONTEND_URL || process.env.APP_URL}">Open App</a></p>
       <p>&copy; ${new Date().getFullYear()} SleekFlow Todo. All rights reserved.</p>
     </div>
   </div>
@@ -204,7 +204,7 @@ export const sendTodoSharedEmail = async (
       <h3>${todoName}</h3>
     </div>
     
-    <a href="${process.env.APP_URL}/todos" class="button">View Todo</a>
+    <a href="${process.env.EMAIL_FRONTEND_URL || process.env.APP_URL}/todos" class="button">View Todo</a>
     
     <p>You can now view and edit this todo in your dashboard.</p>
   `;
@@ -234,7 +234,7 @@ export const sendCommentNotificationEmail = async (
       <p><strong>${commenterName}:</strong> ${commentContent}</p>
     </div>
     
-    <a href="${process.env.APP_URL}/todos" class="button">View Comment</a>
+    <a href="${process.env.EMAIL_FRONTEND_URL || process.env.APP_URL}/todos" class="button">View Comment</a>
   `;
 
   await sendEmail({
@@ -267,7 +267,7 @@ export const sendDueSoonReminderEmail = async (
       <p><strong>Due:</strong> ${dueDate.toLocaleDateString()} at ${dueDate.toLocaleTimeString()}</p>
     </div>
     
-    <a href="${process.env.APP_URL}/todos" class="button">View Todo</a>
+    <a href="${process.env.EMAIL_FRONTEND_URL || process.env.APP_URL}/todos" class="button">View Todo</a>
     
     <p>Don't forget to complete it on time!</p>
   `;
@@ -301,7 +301,7 @@ export const sendOverdueReminderEmail = async (
       <p><strong>Was due:</strong> ${dueDate.toLocaleDateString()} at ${dueDate.toLocaleTimeString()}</p>
     </div>
     
-    <a href="${process.env.APP_URL}/todos" class="button">Complete Now</a>
+    <a href="${process.env.EMAIL_FRONTEND_URL || process.env.APP_URL}/todos" class="button">Complete Now</a>
   `;
 
   await sendEmail({
@@ -348,7 +348,7 @@ export const sendDailyDigestEmail = async (
     
     ${todayTodos.length > 0 ? `<h3>Todos Due Today:</h3>${todosList}` : '<p>No todos due today! 🎉</p>'}
     
-    <a href="${process.env.APP_URL}/todos" class="button">Open App</a>
+    <a href="${process.env.EMAIL_FRONTEND_URL || process.env.APP_URL}/todos" class="button">Open App</a>
   `;
 
   await sendEmail({
@@ -380,7 +380,7 @@ export const sendWeeklyDigestEmail = async (
     
     <p>${stats.completedThisWeek > 0 ? 'Great job this week! Keep up the momentum! 🚀' : 'Let\'s make next week more productive! 💪'}</p>
     
-    <a href="${process.env.APP_URL}/todos" class="button">View All Todos</a>
+    <a href="${process.env.EMAIL_FRONTEND_URL || process.env.APP_URL}/todos" class="button">View All Todos</a>
   `;
 
   await sendEmail({
