@@ -138,28 +138,32 @@ Add the following variables to `backend/.env`:
 
 ```env
 # Server Configuration
-PORT=5000
+PORT=3000
 NODE_ENV=development
 
 # Database
-MONGODB_URI=mongodb://localhost:27017/sleekflow-todo
+MONGODB_URI=mongodb://localhost:27017/todoapp
 # Or use MongoDB Atlas:
-# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/sleekflow-todo
+# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/todoapp
 
 # JWT Authentication
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-JWT_EXPIRE=30d
+JWT_SECRET=your_super_secret_jwt_key_change_this_in_production_12345
+JWT_EXPIRE=7d
 
-# Email Configuration (Optional)
-EMAIL_ENABLED=false
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASS=your-app-password
-EMAIL_FROM=noreply@sleekflow.com
+# Email Configuration (Gmail example)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password  # Use Gmail App Password
+FROM_EMAIL=your-email@gmail.com
+FROM_NAME=SleekFlow Todo App
 
-# Frontend URL (for CORS)
-FRONTEND_URL=http://localhost:5173
+# URLs
+APP_URL=http://localhost:5173
+EMAIL_FRONTEND_URL=https://sleekflow-todo-frontend.onrender.com
+
+# Email Features
+ENABLE_EMAIL_NOTIFICATIONS=true
 ```
 
 ### Frontend Configuration
@@ -174,16 +178,18 @@ touch .env  # or create manually
 Add the following variables to `frontend/.env`:
 
 ```env
-VITE_API_URL=http://localhost:5000
-VITE_SOCKET_URL=http://localhost:5000
+VITE_API_URL=http://localhost:3000
+VITE_SOCKET_URL=http://localhost:3000
 ```
 
 ### Important Notes:
 
 1. **JWT_SECRET**: Use a strong, random string in production
 2. **MONGODB_URI**: Update with your MongoDB connection string
-3. **EMAIL_ENABLED**: Set to `true` only if you want email notifications
-4. **EMAIL_PASS**: For Gmail, use an [App Password](https://support.google.com/accounts/answer/185833)
+3. **ENABLE_EMAIL_NOTIFICATIONS**: Set to `true` to enable email notifications
+4. **SMTP_PASS**: For Gmail, use an [App Password](https://support.google.com/accounts/answer/185833)
+5. **EMAIL_FRONTEND_URL**: Set to your production frontend URL for email links
+6. **APP_URL**: Local development frontend URL (used as fallback for EMAIL_FRONTEND_URL)
 
 ---
 
@@ -208,7 +214,7 @@ cd backend
 npm run dev
 ```
 
-Backend will run on `http://localhost:5000`
+Backend will run on `http://localhost:3000`
 
 #### 3. Start Frontend Development Server
 
@@ -915,12 +921,12 @@ Error: Network Error
 
 #### Socket.io Connection Failed
 ```
-WebSocket connection to 'ws://localhost:5000' failed
+WebSocket connection to 'ws://localhost:3000' failed
 ```
 **Solution:**
-- Ensure backend is running
-- Check `VITE_SOCKET_URL` in `frontend/.env`
-- Clear browser cache
+- Ensure backend is running on port 3000
+- Check `VITE_SOCKET_URL` in `frontend/.env` (should be `http://localhost:3000`)
+- Clear browser cache and restart frontend dev server
 
 #### Blank Page After Login
 **Solution:**
