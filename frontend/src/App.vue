@@ -27,7 +27,7 @@ body {
 }
 
 /* Hide Vue DevTools button */
-.vue-devtools__anchor-btn {
+.vue-devtools__anchor {
   display: none !important;
 }
 
